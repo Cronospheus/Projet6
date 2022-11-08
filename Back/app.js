@@ -1,4 +1,6 @@
 const express = require("express");
+dotenv = require("dotenv");
+dotenv.config();
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/User");
 const sauceRoutes = require("./routes/Sauce");
@@ -6,7 +8,7 @@ const path = require("path");
 
 mongoose
   .connect(
-    "mongodb+srv://Cronospheus:Cronospheus@cluster0.naunatz.mongodb.net/?retryWrites=true&w=majority",
+    `mongodb+srv://Cronospheus:${process.env.connect}@cluster0.naunatz.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
